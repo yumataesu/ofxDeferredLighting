@@ -36,7 +36,7 @@ public:
 	    settings.minFilter = GL_NEAREST;
 	    settings.maxFilter = GL_NEAREST;
 
-		int num = 2;
+		int num = 5;
 		lights_.reserve(num);
 		for (int i = 0; i < num; ++i) {
 			lights_.emplace_back(ofx::ofxDeferredLighting::Light());

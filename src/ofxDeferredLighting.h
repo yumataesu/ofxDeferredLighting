@@ -18,9 +18,9 @@ class DeferredLighting
 public:
 	DeferredLighting(int width, int height)
 	{
-		if (!lighting_shader_.load("../../../../addons/ofxDeferredLighting/assets/lighting")) {
-			lighting_shader_.unload();
-			lighting_shader_.load("../../addons/ofxDeferredLighting/assets/lighting");
+        std::string path = "../../addons/ofxDeferredLighting/assets/lighting";
+		if (!lighting_shader_.load(path)) {
+            lighting_shader_.load("../../" + path);
 		}
 
         ofFbo::Settings settings;

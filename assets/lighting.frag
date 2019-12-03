@@ -1,4 +1,4 @@
-#version 410
+#version 330
 
 const int Max_Light_Num = 24;
 struct Light {

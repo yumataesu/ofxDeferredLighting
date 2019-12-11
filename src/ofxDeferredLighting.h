@@ -18,9 +18,8 @@ class DeferredLighting
 public:
 	DeferredLighting(int width, int height)
 	{
-		if (!lighting_shader_.load("../../../../addons/ofxDeferredLighting/assets/lighting")) {
-			lighting_shader_.unload();
-			lighting_shader_.load("../../addons/ofxDeferredLighting/assets/lighting");
+		if (!lighting_shader_.load("../../addons/ofxDeferredLighting/assets/lighting")) {
+			lighting_shader_.load("../../../../addons/ofxDeferredLighting/assets/lighting");
 		}
 
         ofFbo::Settings settings;
@@ -74,7 +73,8 @@ public:
 	{
 
 		for (auto& light : lights_) {
-			light.update(ofGetLastFrameTime());
+			glm::vec3 p = cam_pos + light.getOffsetPosition();
+			light.setPosition(p);
 		}
 
 		ofxssao_->process(position_tex, normal_tex, view, projection);

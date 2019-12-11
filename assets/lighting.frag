@@ -54,6 +54,6 @@ void main() {
 
     color = pow(color.rgb, vec3(2.2));
     fragColor = vec4(color * vec3(result) * ao.r, 1.0);
-    fragColor = vec4(vec3(ao.r), 1.0);
+    //fragColor = vec4(vec3(ao.r), 1.0);
 
 }

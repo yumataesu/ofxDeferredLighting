@@ -11,14 +11,16 @@ namespace ofxDeferredLighting {
 struct Light : public ofNode
 {
 	Light()
-		: b_manual_(false)
+		: b_manual_(true)
 		, seed_(ofRandom(0, 10))
 		, radius_(ofRandom(50, 250))
 		, speed_(ofRandom(0, 1))
-		, diffuse_color(ofFloatColor(ofRandom(0.0, 1.0), ofRandom(0.0, 1.0), ofRandom(0.0, 1.0), 1.0))
+		, diffuse_color(ofFloatColor(1.0, 1.0, 1.0, 1.0))
 		, name_(std::to_string(id_) + "-")
 	{
 		id_++;
+		float r = 30.f;
+		position_offset_ = glm::vec3(ofRandom(-r, r), ofRandom(-r, r), ofRandom(0, r));
 	}
 
 	void update(const double delta_time) {
@@ -42,11 +44,13 @@ struct Light : public ofNode
 	}
 
 	ofFloatColor diffuse_color;
+	glm::vec3& getOffsetPosition() { return position_offset_; }
 
 private:
 	static int id_;
 	std::string name_;
 	glm::vec3 position_;
+	glm::vec3 position_offset_;
 	float speed_;
 	float elapsed_time_;
 	float seed_;
